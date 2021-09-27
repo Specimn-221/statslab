@@ -1,0 +1,42 @@
+---
+title: ''
+author: ""
+date: "9/27/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+```{r}
+#Reading the csv file 
+data <- read.csv("C://Users//Phani Sarma//Downloads//Data.csv") 
+#Converting to dataframes and transposing it 
+data1<- as.data.frame(t(data)) 
+data <- as.data.frame(t(data)) 
+#Removing the extra rows from dataset 
+data <- data[-1,] 
+data <- data[-1,] 
+#renaming the row 
+names(data) <- data[1,] 
+#removing the extra rows from dataset 
+data <- data[-1,] 
+data <- data[-1,] 
+str(data) 
+summary(data) 
+#converting to numeric format and converting to dataframes 
+data2<- as.data.frame(apply(data,2,as.numeric))
+#taking row names of data for year list and manipulating it 
+year <- rownames(data) 
+year <- substr(year,2,5) 
+year <- as.numeric(year) 
+#plotting the graph for inference 
+plot(year,data2$`CO2 emissions (metric tons per capita)`,type="l", col = "blue",  xlab = "Years", ylab = "CO2",main="CO2 emissions (metric tons per capita)")
+plot(year,data2$`Electric power consumption (kWh per capita)`,type="l", col = "g rey", xlab = "Years", ylab = "Electric Power",main="Electric power consumption ( kWh per capita")
+plot(data2$`Energy use (kg of oil equivalent per capita)`,data2$`CO2 emissions ( metric tons per capita)`,type="l", col = "green", xlab = "Energy Used", ylab = " Co2 Levels") 
+plot(year,data2$`Energy use (kg of oil equivalent per capita)`,type="l", col = " green", xlab = "Years", ylab = "Energy use",main="Energy use (kg of oil equivale nt per capita)")
+
+```
+
